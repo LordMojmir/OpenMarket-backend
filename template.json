@@ -33,8 +33,8 @@
         "key": "",
       "url": "https://huggingface.co/datasets/allenai/ai2_arc",
       "downloadUrls": [
-      "https://huggingface.co/datasets/allenai/ai2_arc/resolve/main/ARC-Easy/test-00000-of-00001.parquet?download=true",
-      "https://huggingface.co/datasets/allenai/ai2_arc/resolve/main/ARC-Easy/train-00000-of-00001.parquet?download=true",
+        "https://huggingface.co/datasets/allenai/ai2_arc/resolve/main/ARC-Easy/test-00000-of-00001.parquet?download=true",
+        "https://huggingface.co/datasets/allenai/ai2_arc/resolve/main/ARC-Easy/train-00000-of-00001.parquet?download=true",
         "https://huggingface.co/datasets/allenai/ai2_arc/resolve/main/ARC-Challenge/validation-00000-of-00001.parquet?download=true"
     ]
   }
