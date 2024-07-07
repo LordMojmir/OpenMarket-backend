@@ -51,7 +51,7 @@ def upload_single_image():
 
 
 # img/uuid?=
-# curl 'http://127.0.0.1:5000/retrieve_img_by_uuid?uuid=your-uuid-value'
+# curl 'http://127.0.0.1:5000/retrieve_img_by_uuid?uuid=5e519090-b7e4-4a91-85a5-6389727a4d1e'
 @app.route('/retrieve_img_by_uuid', methods=['GET'])
 def retrieve_img_by_uuid():
     uuid = request.args.get('uuid')
