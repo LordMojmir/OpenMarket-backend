@@ -1,4 +1,6 @@
-from flask import Flask, jsonify, request
+import uuid
+
+from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS
 import requests
 import os
@@ -9,11 +11,9 @@ from inference import get_response, get_all_possible_models
 app = Flask(__name__)
 CORS(app)
 
-
-@app.route('/api', methods=['GET'])
+@app.route('/test', methods=['GET'])
 def get_data():
-    response = requests.get('https://api.example.com/data')
-    return jsonify(response.json())
+    return jsonify({"data": "Hello, World!"})
 
 
 @app.route('/upload', methods=['POST'])
@@ -28,26 +28,42 @@ def upload_data():
     return jsonify({'message': 'Data uploaded successfully'}), 200
 @app.route('/single_image', methods=['POST'])
 def upload_single_image():
+    print(request.files)
     if 'file' not in request.files:
         return jsonify({'error': 'No file part in the request'}), 400
 
     file = request.files['file']
-
-    # If the user does not select a file, the browser submits an empty file without a filename
-    if file.filename == '':
-        return jsonify({'error': 'No file selected'}), 400
-
+    current_uuid = str(uuid.uuid4())
+    this_file_name = current_uuid + '.jpg'
+    print(this_file_name)
+    print(file)
+    print(file.filename)
     if file and allowed_file_for_thumbnail(file.filename):
-        # Use the filename from the uploaded file (consider sanitizing or securing the filename)
         filename = file.filename
-        save_path = os.path.join('data', filename)
 
+        save_path = os.path.join('data/img/', this_file_name)
         # Save the file
         file.save(save_path)
 
-        return jsonify({'message': 'File successfully uploaded', 'filename': filename}), 200
+        return jsonify({'message': 'File successfully uploaded', 'uuid': current_uuid, 'filename': this_file_name}), 200
     else:
         return jsonify({'error': 'Invalid file format'}), 400
+
+
+# img/uuid?=
+# curl 'http://127.0.0.1:5000/retrieve_img_by_uuid?uuid=your-uuid-value'
+@app.route('/retrieve_img_by_uuid', methods=['GET'])
+def retrieve_img_by_uuid():
+    uuid = request.args.get('uuid')
+    if not uuid:
+        return jsonify({'error': 'UUID parameter is missing'}), 400
+
+    img_path = os.path.join('data/img/', f'{uuid}.jpg')
+
+    if os.path.exists(img_path):
+        return send_file(img_path)
+    else:
+        return jsonify({'error': 'Image not found'}), 404
 
 
 @app.route('/generate', methods=['POST'])
@@ -78,4 +94,4 @@ def test_route():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)

@@ -23,7 +23,7 @@ def get_response(for_model, prompt):
         "snowflake/snowflake-arctic-instruct",
         "meta/meta-llama-3-8b-instruct",
         "meta/llama-2-13b-chat"
-        "mistralai/mistral-7b-instruct-v0.2"
+            "mistralai/mistral-7b-instruct-v0.2"
     ]
     #
     # if for_model not in models:

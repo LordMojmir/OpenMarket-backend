@@ -1,0 +1,15 @@
+[
+    {
+        "name": "John",
+        "img": "https://storage.googleapis.com/galadriel-assets/16b01689-47da-420f-b665-091abaeee4e0.png",
+        "backstory": "Scarlett Whitmore is a dedicated environmental lawyer hailing from the bustling city of San Francisco. Growing up near the coast, she developed a profound love for nature, leading her to pursue a career in environmental law. She graduated top of her class from Stanford Law School and has since been advocating for sustainable practices and policies in the corporate world. Scarlett is known for her tenacity in the courtroom and her ability to connect with people on a personal level, making her a formidable force in her field.",
+        "prompt": "Generate an image of a woman in her early thirties with long auburn hair and hazel eyes. She is dressed in professional attire, standing confidently against a backdrop of a city skyline with a hint of nature, such as a visible park or a body of water, to emphasize her love for the environment. The image should exude a sense of determination and intelligence, reflecting her successful career as an environmental lawyer. This image will serve as Scarlett Whitmore's LinkedIn profile picture.",
+        "facts": {
+            "Profession": "Environmental Lawyer",
+            "Age": 34,
+            "Nationality": "American",
+            "Physical Description": "Long auburn hair, hazel eyes, tall, athletic build",
+            "Personality": "Passionate, determined, empathetic, and intelligent"
+        }
+    }
+]
