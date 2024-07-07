@@ -31,6 +31,9 @@ def upload_single_image():
     if file and allowed_file_for_thumbnail(file.filename):
         filename = file.filename
 
+        # create folder if not exists
+        if not os.path.exists('data/img/'):
+            os.makedirs('data/img/')
         save_path = os.path.join('data/img/', this_file_name)
         # Save the file
         file.save(save_path)
